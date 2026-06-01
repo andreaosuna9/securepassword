@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Verificador de Contraseñas</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f4f6f9;
+    padding:40px;
+}
+
+.contenedor{
+    max-width:800px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+.ok{
+    color:green;
+    font-weight:bold;
+}
+
+.bad{
+    color:red;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:15px;
+}
+
+h1,h2{
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h1>🔒 Verificador de Contraseñas Seguras</h1>
+
+<p>
+Ingrese una contraseña y verifique si cumple con
+las recomendaciones de seguridad.
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="Escriba su contraseña"
+>
+
+<h3>Requisitos</h3>
+
+<p id="longitud" class="bad">
+✖ Mínimo 12 caracteres
+</p>
+
+<p id="mayus" class="bad">
+✖ Al menos una letra mayúscula
+</p>
+
+<p id="minus" class="bad">
+✖ Al menos una letra minúscula
+</p>
+
+<p id="numero" class="bad">
+✖ Al menos un número
+</p>
+
+<p id="simbolo" class="bad">
+✖ Al menos un símbolo especial
+</p>
+
+<button
+id="continuar"
+disabled
+onclick="window.location.href='/felicidades'">
+Continuar
+</button>
+
+<hr>
+
+<h2>Generador de Contraseñas</h2>
+
+<p>
+Ingrese entre una y cuatro palabras para generar
+contraseñas seguras.
+</p>
+
+<form method="POST">
+
+<input
+type="text"
+name="palabras"
+placeholder="Ejemplo: playa tacos perro mazatlan"
+>
+
+<button type="submit">
+Generar Contraseñas
+</button>
+
+</form>
+
+{% if sugerencias %}
+
+<h3>Sugerencias Generadas</h3>
+
+<ul>
+
+{% for s in sugerencias %}
+<li>{{ s }}</li>
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
+<hr>
+
+<h2>Consejos de Seguridad</h2>
+
+<ul>
+<li>Utiliza al menos 12 caracteres.</li>
+<li>Combina mayúsculas, minúsculas, números y símbolos.</li>
+<li>No uses información personal.</li>
+<li>No reutilices contraseñas.</li>
+<li>Usa un gestor de contraseñas.</li>
+<li>Activa autenticación de dos factores (2FA).</li>
+<li>Cambia tus contraseñas periódicamente.</li>
+</ul>
+
+</div>
+
+<script>
+
+const password =
+document.getElementById("password");
+
+const continuar =
+document.getElementById("continuar");
+
+password.addEventListener("input", function(){
+
+let valor = password.value;
+
+let longitud =
+valor.length >= 12;
+
+let mayus =
+/[A-Z]/.test(valor);
+
+let minus =
+/[a-z]/.test(valor);
+
+let numero =
+/[0-9]/.test(valor);
+
+let simbolo =
+/[^A-Za-z0-9]/.test(valor);
+
+actualizar("longitud", longitud);
+actualizar("mayus", mayus);
+actualizar("minus", minus);
+actualizar("numero", numero);
+actualizar("simbolo", simbolo);
+
+if(
+    longitud &&
+    mayus &&
+    minus &&
+    numero &&
+    simbolo
+){
+    continuar.disabled = false;
+}
+else{
+    continuar.disabled = true;
+}
+
+});
+
+function actualizar(id, cumple){
+
+let elemento =
+document.getElementById(id);
+
+if(cumple){
+
+    elemento.className = "ok";
+    elemento.innerHTML =
+    "✔ " + elemento.innerHTML.substring(2);
+
+}
+else{
+
+    elemento.className = "bad";
+    elemento.innerHTML =
+    "✖ " + elemento.innerHTML.substring(2);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

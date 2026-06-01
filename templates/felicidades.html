@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Felicidades</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    text-align:center;
+    background:#f4f6f9;
+    padding-top:50px;
+}
+
+img{
+    width:450px;
+    border-radius:15px;
+}
+
+a{
+    text-decoration:none;
+    background:#2d89ef;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🎉 ¡Felicidades!</h1>
+
+<p>
+La contraseña cumple con todos los requisitos
+de seguridad.
+</p>
+
+<img
+src="{{ url_for('static', filename='felicidades.jpg') }}"
+alt="felicidades">
+
+<br><br>
+
+<a href="/">
+Volver
+</a>
+
+</body>
+
+</html>

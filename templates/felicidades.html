@@ -3,55 +3,216 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>Felicidades</title>
+    <title>Felicidades</title>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-body{
-    font-family:Arial;
-    text-align:center;
-    background:#f4f6f9;
-    padding-top:50px;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-img{
-    width:450px;
-    border-radius:15px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F8FAFC;
+            min-height: 100vh;
 
-a{
-    text-decoration:none;
-    background:#2d89ef;
-    color:white;
-    padding:12px 25px;
-    border-radius:8px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-</style>
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+
+            padding: 40px;
+
+            border-radius: 24px;
+
+            text-align: center;
+
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+        }
+
+        h1 {
+            color: #000000;
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+
+            border-radius: 16px;
+
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #64748B;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        a {
+            display: inline-block;
+
+            background: #2563EB;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 28px;
+
+            border-radius: 12px;
+
+            font-weight: 600;
+
+            transition: .3s;
+        }
+
+        a:hover {
+            transform: translateY(-2px);
+        }
+    </style>
 
 </head>
 
 <body>
 
-<h1>🎉 ¡Felicidades!</h1>
+    <!DOCTYPE html>
 
-<p>
-La contraseña cumple con todos los requisitos
-de seguridad.
-</p>
+    <html lang="es">
 
-<img
-src="{{ url_for('static', filename='felicidades.jpg') }}"
-alt="felicidades">
+    <head>
 
-<br><br>
+        <meta charset="UTF-8">
+        <title>Felicidades</title>
 
-<a href="/">
-Volver
-</a>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
 
-</body>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-</html>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: #F8FAFC;
+                min-height: 100vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 30px;
+            }
+
+            .card {
+                background: white;
+                max-width: 700px;
+                width: 100%;
+
+                padding: 40px;
+
+                border-radius: 24px;
+
+                text-align: center;
+
+                box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+            }
+
+            h1 {
+                color: #22C55E;
+                font-size: 42px;
+                margin-bottom: 25px;
+            }
+
+            img {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+
+                border-radius: 16px;
+
+                margin-bottom: 25px;
+            }
+
+            p {
+                color: #64748B;
+
+                font-size: 17px;
+
+                line-height: 1.7;
+
+                margin-bottom: 30px;
+            }
+
+            a {
+                display: inline-block;
+
+                background: #2563EB;
+
+                color: white;
+
+                text-decoration: none;
+
+                padding: 14px 28px;
+
+                border-radius: 12px;
+
+                font-weight: 600;
+
+                transition: .3s;
+            }
+
+            a:hover {
+                transform: translateY(-2px);
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="card">
+
+            <h1>¡Felicidades!</h1>
+
+            <img src="{{ url_for('static', filename='felicidades.jpg') }}" alt="felicidades">
+
+            <p>
+                Tu contraseña cumple con todos los requisitos de seguridad.
+                Has creado una contraseña fuerte siguiendo las buenas prácticas
+                recomendadas para proteger tu información.
+            </p>
+
+            <a href="/">
+                Volver
+            </a>
+
+
+        </div>
+
+    </body>
+
+    </html>

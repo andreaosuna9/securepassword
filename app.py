@@ -38,7 +38,7 @@ def verificador():
                 )
 
     return render_template(
-        "verificador.html",
+        "index.html",
         sugerencias=sugerencias
     )
 

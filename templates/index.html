@@ -345,6 +345,10 @@
                     ✖ Al menos un símbolo especial
                 </p>
 
+                <p id="espacios" class="bad" data-texto="No debe contener espacios">
+                    ✖ No debe contener espacios
+                </p>
+
             </div>
 
             <button id="continuar" disabled onclick="window.location.href='/felicidades'">
@@ -380,6 +384,7 @@
                 <ul>
                     <li>Utiliza al menos 12 caracteres.</li>
                     <li>Combina mayúsculas, minúsculas, números y símbolos.</li>
+                    <li>No debe contener espacios.</li>
                     <li>No uses información personal como nombres o fechas importantes.</li>
                     <li>No reutilices la misma contraseña en varias cuentas.</li>
                     <li>Activa la autenticación de dos factores cuando sea posible.</li>
@@ -445,13 +450,17 @@
                 /[0-9]/.test(valor);
 
             let simbolo =
-                /[^A-Za-z0-9]/.test(valor);
+                /[^A-Za-z0-9\s]/.test(valor);
+
+            let sinEspacios =
+                !/\s/.test(valor);
 
             actualizar("longitud", longitud);
             actualizar("mayus", mayus);
             actualizar("minus", minus);
             actualizar("numero", numero);
             actualizar("simbolo", simbolo);
+            actualizar("espacios", sinEspacios);
 
             let puntos = 0;
 
@@ -460,13 +469,14 @@
             if (minus) puntos++;
             if (numero) puntos++;
             if (simbolo) puntos++;
+            if (sinEspacios) puntos++;
 
-            fuerza.style.width = (puntos * 20) + "%";
+            fuerza.style.width = (puntos / 6 * 100) + "%";
 
             if (puntos <= 2) {
                 fuerza.style.background = "#DC2626";
             }
-            else if (puntos <= 4) {
+            else if (puntos <= 5) {
                 fuerza.style.background = "#F59E0B";
             }
             else {
@@ -478,7 +488,8 @@
                 mayus &&
                 minus &&
                 numero &&
-                simbolo
+                simbolo &&
+                sinEspacios
             ) {
                 continuar.disabled = false;
             }
